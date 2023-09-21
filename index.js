@@ -15,9 +15,12 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
-}
+function MenuElemaniOlustur(x,y,z){
+	const menu = { isim: x , fiyat: y, kategori: z};
+	return menu;
+};
+
+console.log (MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'));
 
 
 
@@ -30,7 +33,9 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
-
+console.log (MenuElemaniOlustur('Kahve', 15, 'Icecekler'));
+console.log (MenuElemaniOlustur('Soda', 15, 'Icecekler'));
+console.log (MenuElemaniOlustur('Pizza', 40, 'Pizzalar'));
 
 
 /* Görev 2: 
@@ -50,8 +55,17 @@ const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
-
+	indirim: function(a) { 
+		if (a === "öğretmen" || a === "öğrenci" ) {
+			return this.fiyat * 0.75;
+		}
+		else {return this.fiyat * 0.90;
+	}
 }
+}
+
+console.log(burger.indirim("öğretmen"));
+
 
 
 
@@ -71,6 +85,11 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
+for (let i = 0; i < degerlendirmeler.length; i++) {
+    if (degerlendirmeler[i].isim === "Ahmet") {
+        console.log(degerlendirmeler[i].geribildirim);
+    }
+}
 
 
 
@@ -79,7 +98,14 @@ const degerlendirmeler = [
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
+for (let i = 0; i < degerlendirmeler.length; i++) {
+    if (degerlendirmeler[i].isim === "Reyna") {
+        degerlendirmeler[i].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
+        break;
+	}
+}
 
+console.log(degerlendirmeler);
 
 
 /*  Görev 5: 
@@ -94,10 +120,19 @@ const degerlendirmeler = [
 */
 
 
-function DegerlendirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
-}
+function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim){
+	const yeniDegerlendirme = {
+        isim: isim,
+        puan: puan,
+        geribildirim: geribildirim
+    };
+	degerlendirmeler.push(yeniDegerlendirme);
+	return degerlendirmeler;
+	}
+
+	const yeniDegerlendirme = DegerlendirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!'); 
+
+	console.log(yeniDegerlendirme);
 
 
 
